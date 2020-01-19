@@ -178,6 +178,7 @@ operator [[<][=]|[>][=]|[=][=]|[!][=]|[>]|[<]|[\|][\|]|[&][&]|[\!]|[=]|[\^]|[\+]
 ([#][" "]*({DE})[" "]*([A-Za-z]+)(" ")*[0-9]+)/["\n"|\/|" "|"\t"] {printf("%s \t-Macro\n",yytext);} //Matches macro
 \/\/(.*) {printf("%s \t- SINGLE LINE COMMENT\n", yytext);}				
 \/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/  {printf("%s \t- MULTI LINE COMMENT\n", yytext);}
+
 [ \n\t] ;
 ; {printf("%s \t- SEMICOLON DELIMITER\n", yytext);}
 , {printf("%s \t- COMMA DELIMITER\n", yytext);}
@@ -193,7 +194,7 @@ operator [[<][=]|[>][=]|[=][=]|[!][=]|[>]|[<]|[\|][\|]|[&][&]|[\!]|[=]|[\^]|[\+]
 auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while|main/[\(|" "|\{|;|:|"\n"|"\t"] {printf("%s \t- KEYWORD\n", yytext); insertST(yytext, "KEYWORD");}
 \"[^\n]*\"/[;|,|\)] {printf("%s \t- STRING CONSTANT\n", yytext); insertCT(yytext,"STRING CONSTANT");}
 \'[A-Z|a-z]\'/[;|,|\)|:] {printf("%s \t- Character CONSTANT\n", yytext); insertCT(yytext,"Character CONSTANT");}
-[a-z|A-Z]([a-z|A-Z]|[0-9])*/\[ {printf("%s \t- ARRAY IDENTIFIER\n", yytext); insertST(yytext, "IDENTIFIER");}
+[a-z|A-Z|_]([a-z|A-Z|_]|[0-9])*/\[[1-9][0-9]*\] {printf("%s \t- ARRAY IDENTIFIER\n", yytext); insertST(yytext, "IDENTIFIER");}
 
 {operator}/[a-z]|[0-9]|;|" "|[A-Z]|\(|\"|\'|\)|\n|\t {printf("%s \t- OPERATOR\n", yytext);} 
 
@@ -205,19 +206,19 @@ auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for
 (.?) {
 		if(yytext[0]=='#')
 		{
-       		printf("Error in Pre-Processor directive at line no. %d\n",yylineno);
+       		printf("line No %d :Error in Pre-Processor directive\n",yylineno);
        	}
 	    else if(yytext[0]=='/')
 	    {
-       		printf("ERR_UNMATCHED_COMMENT at line no. %d\n",yylineno);
+       		printf("line No %d :ERR_UNMATCHED_COMMENT\n",yylineno);
        	}
        	else if(yytext[0]=='"')
        	{
-       		printf("ERR_INCOMPLETE_STRING at line no. %d\n",yylineno);
+       		printf("line No %d :ERR_INCOMPLETE_STRING\n",yylineno);
        	}
        	else
        	{
-       		printf("ERROR at line no. %d\n",yylineno);
+       		printf("line No %d :ERROR at line no. %d\n",yylineno);
        	}
        	printf("%s\n", yytext);
        	return 0;
