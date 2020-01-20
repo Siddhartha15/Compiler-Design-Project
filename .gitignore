@@ -53,3 +53,4 @@ Mkfile.old
 dkms.conf
 
 lex.yy.c
+input.c

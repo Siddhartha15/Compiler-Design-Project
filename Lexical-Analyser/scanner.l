@@ -49,7 +49,7 @@ operator [[<][=]|[>][=]|[=][=]|[!][=]|[>]|[<]|[\|][\|]|[&][&]|[\!]|[=]|[\^]|[\+]
 auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while|main/[\(|" "|\{|;|:|"\n"|"\t"] {printf("%s \t- KEYWORD\n", yytext); insertSymTbl(yytext, "KEYWORD");}
 \"[^\n]*\"/[;|,|\)] {printf("%s \t- STRING CONSTANT\n", yytext); insertConstTbl(yytext,"STRING CONSTANT");}
 \'[A-Z|a-z]\'/[;|,|\)|:] {printf("%s \t- Character CONSTANT\n", yytext); insertConstTbl(yytext,"Character CONSTANT");}
-[a-z|A-Z|_]([a-z|A-Z|_]|[0-9])*/\[[1-9][0-9]*\] {printf("%s \t- ARRAY IDENTIFIER\n", yytext); insertSymTbl(yytext, "IDENTIFIER");}
+[a-z|A-Z|_]([a-z|A-Z|_]|[0-9])*/\[[0-9]*\] {printf("%s \t- ARRAY IDENTIFIER\n", yytext); insertSymTbl(yytext, "IDENTIFIER");}
 
 {operator}/[a-z]|[0-9]|;|" "|[A-Z]|\(|\"|\'|\)|\n|\t {printf("%s \t- OPERATOR\n", yytext);} 
 
