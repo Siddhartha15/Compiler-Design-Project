@@ -1,5 +1,8 @@
 # Parser
 
-## To run all tests
-- Make sure all the tests are in `tests` directory with names as `test1.c`, `test2.c` etc.
-- `./run.sh`
+## To run test.c
+- Make sure test.c is in 'Parser' directory
+- yacc -d parser.y
+- lex scanner.l
+- gcc lex.yy.c y.tab.c -w
+- ./a.out test.c 
