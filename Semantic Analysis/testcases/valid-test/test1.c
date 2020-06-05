@@ -1,19 +1,28 @@
 #include<stdio.h>
+
+int myfunc(int b)
+{
+    int x;
+    return x;
+}
+
+
 void main()
 {
     int n,i;
+    char ch;//Character Datatype
     int x;
-    for (i=0;i<n;i++){
+    int a[10];
+    for (i=0;i<10;i++){
         if(i<10){
             int x;
             while(x<10){
-                int x;
                 x++;
             }
         }
 
     }
-
-    x=3;
+   x=3;
     
 }
+
