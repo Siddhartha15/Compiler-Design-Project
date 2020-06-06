@@ -3,7 +3,7 @@ Compiler-Design-Project is a mini c compiler built using the flex, yacc tools.
 
 
 ## Group Members:
-- Jelwin Rodrigues - 17CO28
+- Jelwin Rodrigues - 17CO218
 - Siddhartha M. - 17CO246
 - Chandan Naik  - 17CO212
 
