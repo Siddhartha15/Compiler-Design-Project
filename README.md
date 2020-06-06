@@ -1,5 +1,5 @@
 # Compiler-Design-Project
-C language Compiler
+Compiler-Design-Project is a mini c compiler built using the flex, yacc tools. 
 
 
 ## Group Members:
